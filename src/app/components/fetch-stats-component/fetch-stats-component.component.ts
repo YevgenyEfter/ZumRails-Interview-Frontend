@@ -15,6 +15,15 @@ import { selectIsLoading } from '../../store/selectors';
 export class FetchStatsComponentComponent implements OnInit, OnDestroy {
   public selectedSortBy: SortType = SortType.Wins;
   public selectedSortDirection: SortDirection = SortDirection.Descending;
+  public sortByOptions = Object.keys(SortType).map((key) => ({
+    label: key,
+    value: SortType[key as keyof typeof SortType],
+  }));
+  public sortDirectionOptions = Object.keys(SortDirection).map((key) => ({
+    label: key,
+    value: SortDirection[key as keyof typeof SortDirection],
+  }));
+
   public isLoading: boolean = false;
 
   private destroy$ = new Subject<void>();
