@@ -2,18 +2,23 @@
   <span>
     <label class="padding-right-5px" for="sortBy">Sort By:</label>
     <select id="sortBy" [(ngModel)]="selectedSortBy">
-      <option value="Wins">Wins</option>
-      <option value="Losses">Losses</option>
-      <option value="Ties">Ties</option>
-      <option value="Name">Name</option>
-      <option value="Id">Id</option>
+      <option
+        *ngFor="let sortByOption of sortByOptions"
+        [ngValue]="sortByOption.value"
+      >
+        {{ sortByOption.label }}
+      </option>
     </select>
   </span>
   <span>
     <label class="padding-right-5px" for="sortDirection">Sort Direction:</label>
     <select id="sortDirection" [(ngModel)]="selectedSortDirection">
-      <option value="Desc">Descending</option>
-      <option value="Asc">Ascending</option>
+      <option
+        *ngFor="let sortDirectionOption of sortDirectionOptions"
+        [ngValue]="sortDirectionOption.value"
+      >
+        {{ sortDirectionOption.label }}
+      </option>
     </select>
   </span>
   <span>
