@@ -28,18 +28,24 @@ export class FetchStatsComponentComponent implements OnInit, OnDestroy {
       .subscribe((isLoading) => {
         this.isLoading = isLoading;
       });
+
+    this.dispatchGetStats();
   }
 
   public onGetStatisticsClicked(): void {
+    this.dispatchGetStats();
+  }
+
+  public ngOnDestroy(): void {
+    this.destroy$.next();
+  }
+
+  private dispatchGetStats(): void {
     this.store.dispatch(
       getStats({
         sortBy: this.selectedSortBy,
         sortDirection: this.selectedSortDirection,
       })
     );
-  }
-
-  public ngOnDestroy(): void {
-    this.destroy$.next();
   }
 }

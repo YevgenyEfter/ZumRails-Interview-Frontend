@@ -4,9 +4,6 @@ import { AppState } from './store/reducer';
 import { selectError, selectStats } from './store/selectors';
 import { Subject, takeUntil } from 'rxjs';
 import { PokemonResult } from './models/pokemon-result';
-import { getStats } from './store/actions';
-import { SortType } from './models/sort-type';
-import { SortDirection } from './models/sort-direction';
 
 @Component({
   selector: 'app-root',
@@ -36,13 +33,6 @@ export class AppComponent implements OnInit, OnDestroy {
       .subscribe((errorMessage) => {
         this.errorMessage = errorMessage;
       });
-
-    this.store.dispatch(
-      getStats({
-        sortBy: SortType.Wins,
-        sortDirection: SortDirection.Ascending,
-      })
-    );
   }
 
   public ngOnDestroy(): void {
